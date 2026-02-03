@@ -12,10 +12,26 @@ import images from "@assets/Images";
 import BoxIcon from "@components/Header/BoxIcon";
 import NavMenu from "@components/Header/NavMenu";
 import config from "@/config";
+import { useEffect, useState } from "react";
 const cx = classNames.bind(styles);
 function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
+  const wrapperClass = cx("wrapper", {
+    sticky: isScrolled,
+  });
   return (
-    <div className={cx("wrapper")}>
+    <div className={wrapperClass}>
       <div className={cx("container")}>
         {/* box icon 1 */}
         <div className={cx("box-icon")}>

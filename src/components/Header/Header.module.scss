@@ -2,12 +2,27 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  background-color: transparent;
+  padding: v.$header_spacerTop 0;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 10;
-  padding: v.$header_spacerTop 0;
+
+  &.sticky {
+    box-shadow: 2px 0 12px 0 rgba(0, 0, 0, 0.15);
+    background-color: v.$white_color;
+    animation: slideDown linear 0.3s forwards;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 .container {
   display: flex;
@@ -15,7 +30,6 @@
   align-items: center;
   width: v.$web_inner_width;
   height: v.$header_height;
-  // background-color: #e7b5cb;
 }
 //box icon
 .box-icon {
