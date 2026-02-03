@@ -1,0 +1,22 @@
+.wrapper {
+  @include mix.flex_box;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &.primary {
+    @include mix.btn(200px, 40px, 4px, v.$primary_color); //nút đen chữ trắng
+    color: v.$white_color;
+  }
+
+  &.outline {
+    @include mix.btn(30px, 30px, 4px, v.$white_color); // Nút trắng viền xám
+    border: 1px solid #e1e1e1;
+    color: v.$primary_color;
+  }
+
+  &.large {
+    width: 100%;
+    padding: 15px 0;
+  }
+}

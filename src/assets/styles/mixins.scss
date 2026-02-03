@@ -1,0 +1,21 @@
+@mixin borderRadius($r: 10px) {
+  border-radius: $r;
+}
+@mixin btn($w, $h, $radius: 50%, $bgc: #fff) {
+  @include flex_box;
+  @include borderRadius($radius);
+  width: $w;
+  height: $h;
+  background-color: $bgc;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+}
+
+@mixin flex_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

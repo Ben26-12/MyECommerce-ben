@@ -1,19 +1,11 @@
-import { useState } from "react";
-
 import "@styles/main.scss";
 import MainLayout from "@components/Layout";
-import Header from "@components/Header/";
-import Footer from "@components/Footer/";
+import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   return (
-    <>
-      <h1>Welcome Ben</h1>
-      <MainLayout>
-        <Header />
-        My content
-        <Footer />
-      </MainLayout>
-    </>
+    <Router>
+      <MainLayout>My content</MainLayout>
+    </Router>
   );
 }
 export default App;
