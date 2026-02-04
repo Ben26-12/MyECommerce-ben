@@ -4,7 +4,7 @@ import Banner from "@/components/Banner";
 import styles from "./Home.module.scss";
 import SectionInfo from "@/Pages/Home/SectionInfo";
 import images from "@/assets/Images";
-
+import FeatureProducts from "@/Pages/Home/FeaturedProducts";
 const cx = classNames.bind(styles);
 function Home() {
   return (
@@ -18,6 +18,8 @@ function Home() {
       />
       {/* section infomation */}
       <SectionInfo />
+      {/* Feature products  */}
+      <FeatureProducts />
     </div>
   );
 }

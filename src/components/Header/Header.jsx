@@ -25,13 +25,15 @@ function Header() {
       }
     };
     window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const wrapperClass = cx("wrapper", {
     sticky: isScrolled,
   });
   return (
-    <div className={wrapperClass}>
+    <header className={wrapperClass}>
       <div className={cx("container")}>
         {/* left menu  */}
         <div className={cx("left-menu")}>
@@ -42,7 +44,11 @@ function Header() {
           </div>
           <div className={cx("nav-menu")}>
             {NAV_MENU.map((item, index) => {
-              return <NavMenu item={item} key={index} />;
+              return (
+                <div key={index} className={cx("nav-item")}>
+                  <NavMenu item={item} />
+                </div>
+              );
             })}
           </div>
         </div>
@@ -56,7 +62,11 @@ function Header() {
         <div className={cx("right-menu")}>
           <div className={cx("nav-menu")}>
             {NAV_ACTIONS.map((item, index) => {
-              return <NavMenu item={item} key={index} />;
+              return (
+                <div key={index} className={cx("nav-item")}>
+                  <NavMenu item={item} />
+                </div>
+              );
             })}
           </div>
           <div className={cx("box-icon")}>
@@ -66,7 +76,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

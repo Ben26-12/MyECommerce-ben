@@ -18,7 +18,7 @@ function NavMenu({ item }) {
   };
 
   return (
-    <div className={cx("nav-item")}>
+    <>
       {Component === "a" ? (
         <a className={cx("nav-link")} {...props}>
           {item.title}
@@ -28,7 +28,7 @@ function NavMenu({ item }) {
           {item.title}
         </NavLink>
       )}
-    </div>
+    </>
   );
 }
 

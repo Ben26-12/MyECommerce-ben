@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 ::selection {
   background-color: #f2f2f2;
@@ -18,5 +19,4 @@ body {
 }
 a[href] {
   text-decoration: none;
-  color: v.$primary-color;
 }

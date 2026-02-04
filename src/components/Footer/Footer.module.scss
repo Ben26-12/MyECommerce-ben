@@ -1,0 +1,47 @@
+.footer {
+  @include mix.flex_box;
+  width: 100%;
+  height: v.$footer_height;
+  background-color: #363636;
+}
+.container {
+  width: v.$web_inner_width;
+  @include mix.flex_box;
+  flex-direction: column;
+}
+//logo
+.logo img {
+  width: 160px;
+  height: 55px;
+  height: v.$header_height;
+  cursor: pointer;
+}
+//footer nav
+.footer-nav {
+  @include mix.flex_box;
+  margin: 15px 0 40px;
+  gap: 40px;
+  .nav-item {
+    color: v.$white_color;
+  }
+}
+.footer-item {
+  a {
+    color: v.$white_color;
+    transition: 0.3s;
+  }
+
+  &:hover a {
+    opacity: 0.6;
+  }
+}
+.warranty {
+  font-weight: 400;
+  line-height: 21px;
+  color: v.$white_color;
+  margin-bottom: 20px;
+}
+.copyrights {
+  color: v.$white_color;
+  margin: 40px 0;
+}
