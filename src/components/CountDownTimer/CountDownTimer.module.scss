@@ -1,0 +1,33 @@
+.timer-wrapper {
+  @include mix.flex_box;
+  gap: 20px;
+}
+.countdown-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.time-box {
+  @include mix.flex_box;
+  padding: 7px 16px;
+  background-color: v.$white_color;
+  border-radius: 4px;
+}
+
+.hours,
+.days,
+.minutes,
+.seconds {
+  @include mix.flex_box;
+  color: v.$primary_color;
+  font-size: 1.8rem;
+  font-weight: 400;
+  gap: 6px;
+
+  span {
+    text-transform: capitalize;
+    color: v.$secondary_color;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+}

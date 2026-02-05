@@ -11,9 +11,7 @@ function CountDownBanner() {
       className={cx("countdown-wrapper")}
       style={{ backgroundImage: `url(${images.countDownImage})` }}
     >
-      <div className={cx("timmer-wrapper")}>
-        <CountDownTimer />
-      </div>
+      <CountDownTimer targetDate="2026-02-06T16:00:00.000+07:00" />
       <div className={cx("content")}>
         <div className={cx("title")}>The classics make a comeback</div>
         <Button primary className={cx("btn")}>
