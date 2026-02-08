@@ -1,0 +1,29 @@
+//nav
+.navigation {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 1.4rem;
+  justify-content: space-between;
+}
+.breadcrumb-text {
+  @include mix.flex_box;
+
+  .special-text {
+    color: v.$primary_color;
+  }
+}
+.normal-text,
+.back-history {
+  cursor: pointer;
+  color: v.$secondary_color;
+}
+
+.back-history {
+  @include mix.flex_box;
+}
+
+.icon {
+  font-size: 1.2rem;
+  margin: 0 4px;
+}

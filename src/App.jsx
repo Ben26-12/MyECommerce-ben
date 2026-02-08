@@ -8,8 +8,8 @@ import SlideBar from "@/components/SlideBar";
 function App() {
   return (
     <SlideBarProvider>
-      <SlideBar />
       <Router>
+        <SlideBar />
         <Routes>
           {publicRoutes.map((route, index) => {
             const Page = route.component;

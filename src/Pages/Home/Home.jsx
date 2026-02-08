@@ -13,6 +13,7 @@ function Home() {
     <div className={cx("wrapper")}>
       {/* Banner */}
       <Banner
+        className={cx("home-banner")}
         backgroundURL={images.banner}
         title="Let's take a little trip"
         description="Make yours celebrations even more special this years with beautiful."

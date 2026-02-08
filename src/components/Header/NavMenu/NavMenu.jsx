@@ -10,6 +10,7 @@ function NavMenu({ item }) {
     Component = NavLink;
     props.to = item.to;
   } else if (item.href) {
+    Component = "a";
     props.href = item.href;
   }
 
@@ -21,11 +22,11 @@ function NavMenu({ item }) {
     <>
       {Component === "a" ? (
         <a className={cx("nav-link")} {...props}>
-          {item.title}
+          <div className={cx("nav-item")}>{item.title}</div>
         </a>
       ) : (
         <NavLink className={navLinkClass} {...props}>
-          {item.title}
+          <div className={cx("nav-item")}>{item.title}</div>
         </NavLink>
       )}
     </>

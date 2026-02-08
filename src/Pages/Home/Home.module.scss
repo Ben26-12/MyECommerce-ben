@@ -4,4 +4,9 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 80px;
+  margin-top: calc((v.$header-height + v.$header_spacerTop * 2) * -1);
+
+  .home-banner {
+    min-height: 750px;
+  }
 }

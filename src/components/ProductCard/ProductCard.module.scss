@@ -1,6 +1,7 @@
 .img-container {
   width: 100%;
   position: relative;
+  cursor: pointer;
 
   &:hover .actions {
     opacity: 1;
@@ -77,17 +78,35 @@
     fill: v.$secondary_color;
   }
 }
-.card-infomation {
+.card-information {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .card-title {
   margin-bottom: 5px;
   font-weight: 400;
   color: v.$primary_color;
+  cursor: pointer;
 }
 
 .price {
   font-size: 1.4rem;
   color: v.$secondary_color;
   margin-bottom: 7px;
+  cursor: pointer;
+}
+.ATC-btn {
+  text-transform: uppercase;
+  width: 145px;
+  height: 35px;
+  border: 1px solid v.$primary_color;
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: v.$white_color;
+    color: v.$primary_color;
+    opacity: 1;
+  }
 }

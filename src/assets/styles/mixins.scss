@@ -1,12 +1,11 @@
 @mixin borderRadius($r: 10px) {
   border-radius: $r;
 }
-@mixin btn($w, $h, $radius: 50%, $bgc: #fff) {
+@mixin btn($w, $h, $radius: 50%) {
   @include flex_box;
   @include borderRadius($radius);
   width: $w;
   height: $h;
-  background-color: $bgc;
 
   &:hover {
     cursor: pointer;

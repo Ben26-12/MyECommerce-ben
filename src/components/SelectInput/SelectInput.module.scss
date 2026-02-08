@@ -1,0 +1,23 @@
+.select-wrapper {
+  position: relative;
+}
+.select-input {
+  padding: 8px 20px 8px 8px;
+  color: v.$secondary_color;
+  font-size: 1.4rem;
+  border: 1px solid v.$secondary_color;
+  appearance: none; // Ẩn mũi tên mặc định của trình duyệt
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.arrow-input {
+  position: absolute;
+  right: 4px;
+  top: 7px;
+  color: v.$secondary_color;
+  pointer-events: none;
+  font-size: 1.4rem;
+}

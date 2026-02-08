@@ -3,9 +3,12 @@ import classNames from "classnames/bind";
 import styles from "./SaleSection.module.scss";
 import Button from "@/components/Button";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import config from "@/config";
 
 const cx = classNames.bind(styles);
 function SaleSection() {
+  const navigate = useNavigate();
   const [translateXPosition, setTranslateXPosition] = useState(150);
 
   const prevPosition = useRef(0);
@@ -47,7 +50,12 @@ function SaleSection() {
           Libero sed faucibus facilisis fermentum. Est nibh sed massa sodales.
         </div>
         <a href="#">
-          <Button className={cx("more-btn")}>Read more</Button>
+          <Button
+            onClick={() => navigate(config.routes.shop)}
+            className={cx("more-btn")}
+          >
+            Read more
+          </Button>
         </a>
       </div>
       <div className={cx("box-img-2")}>

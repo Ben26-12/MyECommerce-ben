@@ -1,6 +1,7 @@
 .icon {
-  @include mix.btn(30px, 30px, 50%, v.$primary_color);
+  @include mix.btn(30px, 30px, 50%);
   position: relative;
+  background-color: v.$primary_color;
 
   path {
     fill: v.$white_color;

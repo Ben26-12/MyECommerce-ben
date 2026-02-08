@@ -5,14 +5,16 @@
   cursor: pointer;
 
   &.primary {
-    @include mix.btn(200px, 40px, 4px, v.$primary_color); //nút đen chữ trắng
+    @include mix.btn(200px, 40px, 4px); //nút đen chữ trắng
     color: v.$white_color;
+    background-color: v.$primary_color;
   }
 
   &.small {
-    @include mix.btn(30px, 30px, 4px, v.$white_color); // Nút trắng viền xám
-    border: 1px solid #e1e1e1;
+    @include mix.btn(30px, 30px, 4px); // Nút trắng viền xám
+    border: 1px solid v.$sub_color;
     color: v.$primary_color;
+    background-color: v.$white_color;
   }
 
   &.large {

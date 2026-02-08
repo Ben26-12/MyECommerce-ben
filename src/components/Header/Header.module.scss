@@ -53,32 +53,3 @@
   gap: 20px;
   height: 100%;
 }
-//nav item
-.nav-item {
-  position: relative;
-  height: 100%;
-  @include mix.flex-box;
-  cursor: pointer;
-
-  a {
-    color: v.$primary_color;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0%;
-    height: 2px;
-    background-color: v.$primary-color;
-    transform-origin: left;
-    transition: 0.3s linear;
-  }
-  &.active::after {
-    width: 100%;
-  }
-}

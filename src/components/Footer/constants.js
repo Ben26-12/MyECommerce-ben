@@ -5,10 +5,6 @@ export const FOOTER_NAV = [
     to: routes.home,
   },
   {
-    title: "Elements",
-    href: routes.elements,
-  },
-  {
     title: "Shop",
     to: routes.shop,
   },

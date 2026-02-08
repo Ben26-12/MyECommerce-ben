@@ -16,8 +16,8 @@ function FeatureProducts() {
       sortType: 1,
       page: 1,
       limit: 14,
-    }).then((data) => {
-      setListProducts(data.contents ?? data);
+    }).then((res) => {
+      setListProducts(res.data.contents ?? res);
     });
   }, []);
   return (

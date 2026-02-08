@@ -33,7 +33,7 @@
     left: 0;
     display: block;
     width: 90%;
-    border-bottom: 4px double #e1e1e1;
+    border-bottom: 4px double v.$sub_color;
     transform: translateY(-50%);
   }
 }
@@ -51,7 +51,7 @@
     right: 0;
     display: block;
     width: 90%;
-    border-bottom: 4px double #e1e1e1;
+    border-bottom: 4px double v.$sub_color;
     transform: translateY(-50%);
   }
 }

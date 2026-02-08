@@ -36,8 +36,8 @@ export const HEADER_ACTIONS = [
   },
 ];
 export const NAV_MENU = [
-  { title: "Elements", href: config.routes.elements },
-  { title: "Our Shop", to: config.routes.shop },
+  { title: "Home", to: config.routes.home },
+  { title: "Collection", to: config.routes.shop },
   { title: "About us", to: config.routes.about },
 ];
 
