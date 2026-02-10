@@ -66,26 +66,3 @@
     color: v.$white_color;
   }
 }
-
-//blank
-.blank-cart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-
-  .blank-title {
-    color: v.$primary_color;
-    font-size: 1.6rem;
-  }
-
-  .blank-content {
-    display: flex;
-    color: v.$secondary_color;
-    font-size: 1.2rem;
-  }
-  .blank-icon {
-    font-size: 12rem;
-  }
-}

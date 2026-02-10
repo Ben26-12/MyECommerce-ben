@@ -1,0 +1,43 @@
+//blank cart
+.blank-cart {
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .blank-icon {
+    font-size: 6rem;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+  }
+
+  .blank-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .blank-content {
+    color: #888;
+    font-size: 1.4rem;
+    max-width: 400px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .return-btn {
+    padding: 15px 40px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

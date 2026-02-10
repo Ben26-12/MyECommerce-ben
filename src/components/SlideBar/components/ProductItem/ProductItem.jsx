@@ -14,23 +14,8 @@ import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 function ProductItem({ product }) {
-  const { handleGetListProductsCart, type } = useContext(slideBarContext);
-  //handle xoa item ra khỏi cart
-  const deleteCartProduct = (productId, userId) => {
-    if (type === "cart") {
-      deleteItem({
-        productId,
-        userId,
-      })
-        .then((res) => {
-          handleGetListProductsCart(userId, "cart");
-          toast.info("Delete item successfully");
-        })
-        .catch((err) => {
-          toast.error("Something went wrong, can not delete item");
-        });
-    }
-  };
+  const { deleteCartProduct } = useContext(slideBarContext);
+
   //handle direct sang product page
   const navigate = useNavigate();
   const handleNavigatetoProduct = () => {

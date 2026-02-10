@@ -1,0 +1,29 @@
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 40px;
+  margin-top: 30px;
+  width: v.$web_inner_width;
+
+  .left-content {
+    flex: 1 1 60%;
+  }
+  .right-content {
+    flex: 1 1 40%;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column; // Trên máy tính bảng/mobile thì xếp chồng lên nhau
+  }
+}

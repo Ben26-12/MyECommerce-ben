@@ -10,6 +10,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { MOCK_USER_ID } from "@/components/ProductCard/constants";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import BlankCart from "@/components/BlankCart";
 const cx = classNames.bind(styles);
 function CartDrawer() {
   const { setIsOpen, setType, listProductCart, handleGetListProductsCart } =
@@ -34,16 +35,7 @@ function CartDrawer() {
     <div className={cx("cart")}>
       <div className={cx("cart-body")}>
         {listProductCart.length <= 0 ? (
-          <div className={cx("blank-cart")}>
-            <div className={cx("blank-icon")}>
-              <FontAwesomeIcon icon={faCartPlus} />
-            </div>
-            <h4 className={cx("blank-title")}>YOUR SHOPPING CART IS EMPTY</h4>
-            <span className={cx("blank-content")}>
-              We invite you to get acquainted with an assortment of our shop.
-              Surely you can find something for yourself!
-            </span>
-          </div>
+          <BlankCart />
         ) : (
           listProductCart.map((product, index) => {
             return <ProductItem key={index} product={product} />;

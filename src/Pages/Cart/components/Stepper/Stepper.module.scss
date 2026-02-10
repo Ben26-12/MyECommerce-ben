@@ -1,0 +1,74 @@
+// Stepper.module.scss
+.stepper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; // Khoảng cách giữa các bước
+  padding: 40px 0;
+  margin: 20px 0;
+  width: 100%;
+  background-color: #fafafa;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 12px;
+  color: v.$secondary_color;
+  transition: all 0.3s ease;
+
+  // Đường kẻ nối giữa các bước (trừ thằng cuối cùng)
+  &:not(:last-child)::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    background-color: v.$sub_color;
+    margin-left: 20px;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid v.$sub_color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .step-name {
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  &.active {
+    color: v.$primary_color;
+
+    .step-number {
+      background-color: v.$primary_color;
+      color: #fff;
+      border-color: v.$primary_color;
+    }
+
+    .step-name {
+      font-weight: 700;
+    }
+  }
+}
+
+// Responsive cho Mobile
+@media (max-width: 768px) {
+  .stepper-container {
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .step-item::after {
+    display: none;
+  }
+}

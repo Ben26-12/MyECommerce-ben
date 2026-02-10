@@ -1,7 +1,8 @@
 import { MOCK_USER_ID } from "@/components/ProductCard/constants";
 import { createContext, useEffect, useState } from "react";
 export const slideBarContext = createContext();
-import { getCart } from "@/apiServices/cartService";
+import { deleteCart, deleteItem, getCart } from "@/apiServices/cartService";
+import { toast } from "react-toastify";
 
 function SlideBarProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,34 @@ function SlideBarProvider({ children }) {
         });
     }
   };
+
+  const deleteCartProduct = (productId, userId) => {
+    if (type === "cart") {
+      deleteItem({
+        productId,
+        userId,
+      })
+        .then((res) => {
+          handleGetListProductsCart(userId, "cart");
+          toast.info("Delete item successfully");
+        })
+        .catch((err) => {
+          toast.error("Something went wrong, can not delete item");
+        });
+    }
+  };
+
+  const handleDeleteCart = () => {
+    deleteCart({ userId: MOCK_USER_ID })
+      .then((res) => {
+        handleGetListProductsCart(MOCK_USER_ID, "cart");
+        toast.info("Delete all items successfully");
+      })
+      .catch((err) => {
+        toast.error("Something went wrong, can not delete item");
+      });
+  };
+
   const value = {
     isOpen,
     setIsOpen,
@@ -27,6 +56,8 @@ function SlideBarProvider({ children }) {
     listProductCart,
     setListProductCart,
     handleGetListProductsCart,
+    deleteCartProduct,
+    handleDeleteCart,
   };
   return (
     <slideBarContext.Provider value={value}>

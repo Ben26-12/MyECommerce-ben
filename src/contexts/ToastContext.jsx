@@ -9,7 +9,7 @@ function ToastProvider({ children }) {
         draggable
         pauseOnHover={false}
       />
-      ;{children}
+      {children}
     </>
   );
 }

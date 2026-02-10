@@ -2,7 +2,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "@styles/main.scss";
 
 import MainLayout from "@components/Layout/MainLayout";
-import { publicRoutes, privateRoutes } from "@/routes";
+import { publicRoutes } from "@/routes";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SlideBarProvider, ToastProvider } from "@/contexts/";
 import SlideBar from "@/components/SlideBar";
