@@ -17,7 +17,14 @@ const cx = classNames.bind(styles);
 function ProductCard({ item, showATC, showVariants }) {
   const { handleGetListProductsCart } = useContext(slideBarContext);
   const navigate = useNavigate();
-  const [sizeChoose, setSizeChoose] = useState("");
+  const defaultSize = () => {
+    if (showVariants) {
+      return "";
+    } else {
+      return item.size[0].name;
+    }
+  };
+  const [sizeChoose, setSizeChoose] = useState(defaultSize);
 
   const handleRedirect = () => {
     navigate(`${config.routes.product}/${item._id}`);
@@ -32,18 +39,15 @@ function ProductCard({ item, showATC, showVariants }) {
       isMultiple: false,
     };
 
-    if (showVariants) {
-      // Nếu hiện variant thì cần chọn variants trước khi add vào cart
-      if (sizeChoose) {
-        addProductToCart(data)
-          .then((res) => {
-            handleGetListProductsCart(MOCK_USER_ID, "cart");
-            toast.success("Added to cart!");
-          })
-          .catch((err) => toast.error("Failed to add!"));
-      } else {
-        toast.error("Please choose your variants to add to cart");
-      }
+    if (!sizeChoose) {
+      toast.error("Please choose your variants to add to cart");
+    } else {
+      addProductToCart(data)
+        .then((res) => {
+          handleGetListProductsCart(MOCK_USER_ID, "cart");
+          toast.success("Added to cart!");
+        })
+        .catch((err) => toast.error("Failed to add!"));
     }
   };
   return (
@@ -51,6 +55,7 @@ function ProductCard({ item, showATC, showVariants }) {
       {/* img container  */}
       <div className={cx("img-container")}>
         <img
+          draggable={false}
           onClick={handleRedirect}
           className={cx("main-img")}
           src={item.images[0]}

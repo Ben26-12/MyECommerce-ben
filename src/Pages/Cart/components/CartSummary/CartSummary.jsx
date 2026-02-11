@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./CartSummary.module.scss";
 import { useNavigate } from "react-router-dom";
 import config from "@/config";
+import PaymentMethods from "@/components/PaymentMethods";
 
 const cx = classNames.bind(styles);
 
@@ -32,10 +33,8 @@ function CartSummary({ subtotal }) {
         >
           CONTINUE SHOPPING
         </button>
+        <PaymentMethods />
       </div>
-      <p className={cx("safe-checkout")}>
-        GUARANTEED <span>SAFE</span> CHECKOUT
-      </p>
     </>
   );
 }

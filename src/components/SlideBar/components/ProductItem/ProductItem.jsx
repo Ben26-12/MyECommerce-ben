@@ -14,12 +14,13 @@ import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 function ProductItem({ product }) {
-  const { deleteCartProduct } = useContext(slideBarContext);
+  const { deleteCartProduct, setIsOpen } = useContext(slideBarContext);
 
   //handle direct sang product page
   const navigate = useNavigate();
   const handleNavigatetoProduct = () => {
     navigate(config.routes.product + `/${product.productId}`);
+    setIsOpen(false);
   };
   //return
   return (

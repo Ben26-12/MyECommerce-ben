@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
 import { useContext } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
-import { CartDrawer } from "@/components/SlideBar/SlideBarContent/";
 import SlideBarHeader from "@/components/SlideBar/components/SlideBarHeader";
+import CartDrawer from "@/components/SlideBar/components/CartDrawer";
 import Button from "@/components/Button";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 

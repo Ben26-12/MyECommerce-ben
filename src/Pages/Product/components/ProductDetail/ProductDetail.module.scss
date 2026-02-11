@@ -1,0 +1,222 @@
+.container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  .image-item {
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+}
+
+.product-info {
+  .name {
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+
+  .price {
+    font-size: 2.2rem;
+    color: v.$secondary_color;
+    margin-bottom: 25px;
+  }
+
+  .description {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: v.$primary_color;
+    margin-bottom: 30px;
+  }
+}
+.size-selection {
+  margin-bottom: 25px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .size-title {
+    font-size: 1.5rem;
+    color: v.$primary_color;
+  }
+
+  .size-list {
+    display: flex;
+    gap: 5px;
+  }
+
+  .size-item {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid v.$sub_color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: all 0.2s ease;
+    user-select: none;
+
+    &:hover {
+      border-color: v.$primary_color;
+    }
+
+    &.active {
+      border-color: v.$primary_color;
+      background-color: #fff;
+      font-weight: 600;
+    }
+
+    &.out-of-stock {
+      opacity: 0.4;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+  }
+}
+.actions-wrapper {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  .add-to-cart {
+    flex: 1;
+    background-color: v.$primary_color;
+    color: v.$white_color;
+    border: 1px solid v.$primary_color;
+    transition: 0.4s;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      background-color: v.$white_color;
+      color: v.$primary_color;
+    }
+  }
+}
+
+.quantity-section {
+  display: flex;
+  border: 1px solid v.$sub_color;
+  button {
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .quantity-input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    border-right: 1px solid v.$sub_color;
+    border-left: 1px solid v.$sub_color;
+    outline: none;
+  }
+}
+.or-separator {
+  text-align: center;
+  color: #999;
+  font-size: 1.2rem;
+  margin: 15px 0;
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: v.$sub_color;
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+}
+
+.buy-now {
+  width: 100%;
+  padding: 15px;
+  background: v.$primary_color;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: 0.4s;
+  color: v.$white_color;
+  &:hover {
+    background: v.$white_color;
+    color: v.$primary_color;
+  }
+}
+
+.meta-data {
+  border-top: 1px solid v.$sub_color;
+  padding-top: 20px;
+  font-size: 1.4rem;
+  p {
+    margin-bottom: 8px;
+  }
+}
+.additional-info {
+  margin-top: 30px;
+  border-top: 1px solid v.$sub_color;
+
+  .info-item {
+    border-bottom: 1px solid v.$sub_color;
+
+    summary {
+      list-style: none; // Cho Firefox
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      user-select: none;
+
+      &::-webkit-details-marker {
+        display: none; // Ẩn dấu mũi tên Chrome/Safari
+      }
+
+      &::before {
+        content: "+"; // Trạng thái đóng hiện dấu cộng
+        margin-right: 10px;
+        font-family: monospace;
+      }
+    }
+
+    .info-content {
+      display: none;
+      padding: 0 0 20px 25px;
+      color: v.$primary_color;
+      font-size: 1.4rem;
+    }
+
+    &[open] {
+      summary::before {
+        content: "—"; // Đổi thành dấu gạch ngang
+      }
+
+      .info-content {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

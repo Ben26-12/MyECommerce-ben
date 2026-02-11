@@ -31,7 +31,6 @@ function CartTable({ items }) {
   const updateNewProductInCart = (data) => {
     addProductToCart(data)
       .then((res) => {
-        console.log(res.data);
         toast.success("Update successfully");
         handleGetListProductsCart(MOCK_USER_ID, "cart");
       })
@@ -89,6 +88,7 @@ function CartTable({ items }) {
               <td>
                 <div className={cx("quantity-box")}>
                   <SelectInput
+                    defaultValue={item.quantity}
                     className={cx("quantity-input")}
                     getValue={(newQuantity) => {
                       const data = {

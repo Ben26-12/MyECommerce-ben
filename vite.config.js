@@ -15,7 +15,6 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // Dùng đường dẫn thông qua @/ cho chắc chắn
         additionalData: `
           @use "@/assets/styles/variables" as v;
           @use "@/assets/styles/mixins" as mix;

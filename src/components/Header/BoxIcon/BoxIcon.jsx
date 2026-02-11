@@ -4,14 +4,21 @@ import Button from "@components/Button";
 import styles from "./BoxIcon.module.scss";
 import { useContext } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
+import { useLocation } from "react-router-dom";
+import config from "@/config";
 const cx = classNames.bind(styles);
 function BoxIcon({ item }) {
   const { isOpen, setIsOpen, setType } = useContext(slideBarContext);
+  const currentURL = useLocation();
 
   const handleCLick = () => {
+    if (currentURL.pathname === config.routes.cart) {
+      return;
+    }
+
     if (item.type) {
       setType(item.type);
-      setIsOpen(!isOpen);
+      setIsOpen(true);
     }
   };
   return (
