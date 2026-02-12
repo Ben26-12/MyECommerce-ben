@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 4px;
+}
+.label {
+  color: v.$secondary_color;
+  text-transform: capitalize;
+}
+.input {
+  padding: 0 12px;
+  height: 40px;
+  width: 100%;
+  border-radius: 3px;
+  color: v.$primary_color;
+  outline: none;
+  border: 1px solid v.$sub_color;
+
+  &::placeholder {
+    color: v.$secondary_color;
+  }
+}
+.error-message {
+  color: #dc3232;
+  text-align: left;
+  font-size: 1.4rem;
+}

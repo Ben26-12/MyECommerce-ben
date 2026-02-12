@@ -1,0 +1,121 @@
+.wrapper {
+  width: v.$web_inner_width;
+  margin: 40px auto;
+  .map-img {
+    width: 100%;
+  }
+}
+.container {
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+  margin-top: 20px;
+  border: 1px solid v.$sub_color;
+}
+
+.info-column {
+  flex: 1;
+  border-right: 1px solid v.$sub_color;
+  padding: 55px;
+}
+.social-box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 4px;
+}
+.contact-column {
+  flex: 2.5;
+  padding: 55px 100px;
+}
+
+.heading {
+  font-size: 2.6rem;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: v.$primary_color;
+}
+
+.info-group {
+  margin-bottom: 25px;
+}
+
+.info-label {
+  display: block;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.info-text {
+  font-size: 1.4rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 4px 0;
+}
+
+.sub-heading {
+  font-size: 1.45rem;
+  color: #666;
+  margin-bottom: 35px;
+  line-height: 1.5;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  & > div {
+    flex: 1;
+  }
+}
+
+.textarea-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 25px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+
+  &:focus {
+    border-color: v.$primary_color;
+  }
+}
+
+.error-message {
+  color: #dc3232;
+}
+.submit-btn {
+  background-color: v.$primary_color;
+  width: 100%;
+
+  color: #fff;
+  border: none;
+  padding: 10px 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #000;
+  }
+}
+//errro mesage for form
+.alert-error {
+  margin-top: 30px;
+  padding: 15px;
+  border: 2px solid #f7be45;
+  font-size: 1.4rem;
+  color: v.$primary_color;
+}
