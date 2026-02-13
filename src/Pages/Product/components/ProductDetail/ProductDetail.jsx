@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDetailProduct } from "@/apiServices/productService";
 import config from "@/config";
+import { faToiletPaperAlt } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const navigate = useNavigate();
@@ -18,16 +19,9 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState();
   const { handleGetListProductsCart } = useContext(slideBarContext);
-
-  useEffect(() => {
-    getDetailProduct(id).then((data) => {
-      setProductInfo(data);
-      if (data?.size?.length > 0) {
-        setSelectedSize(data?.size[0].name);
-      }
-    });
-  }, [id]);
-
+  const handleBuyNow = (productData) => {
+    navigate(config.routes.checkout, { state: [productData] });
+  };
   const handleAddtoCart = (data) => {
     addProductToCart(data)
       .then((res) => {
@@ -40,6 +34,15 @@ function ProductDetail() {
         );
       });
   };
+  useEffect(() => {
+    getDetailProduct(id).then((data) => {
+      setProductInfo(data);
+      if (data?.size?.length > 0) {
+        setSelectedSize(data?.size[0].name);
+      }
+    });
+  }, [id]);
+
   return (
     <div className={cx("container")}>
       {/* Left: Image Gallery */}
@@ -110,7 +113,16 @@ function ProductDetail() {
         <div className={cx("or-separator")}>OR</div>
         <button
           className={cx("buy-now")}
-          onClick={() => navigate(config.routes.checkout)}
+          onClick={() => {
+            const productData = {
+              ...productInfo,
+              userId: MOCK_USER_ID,
+              size: selectedSize,
+              total: Number(productInfo.price * quantity),
+              quantity: Number(quantity),
+            };
+            handleBuyNow(productData);
+          }}
         >
           BUY NOW
         </button>

@@ -46,6 +46,7 @@ export const publicRoutes = [
   {
     path: config.routes.thankyou,
     component: ThankYou,
+    layout: null,
   },
 ];
 

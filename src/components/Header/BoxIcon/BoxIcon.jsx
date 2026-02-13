@@ -8,11 +8,14 @@ import { useLocation } from "react-router-dom";
 import config from "@/config";
 const cx = classNames.bind(styles);
 function BoxIcon({ item }) {
-  const { isOpen, setIsOpen, setType } = useContext(slideBarContext);
-  const currentURL = useLocation();
+  const { setIsOpen, setType } = useContext(slideBarContext);
+  const location = useLocation();
 
   const handleCLick = () => {
-    if (currentURL.pathname === config.routes.cart) {
+    if (
+      location.pathname === config.routes.cart ||
+      location.pathname === config.routes.checkout
+    ) {
       return;
     }
 

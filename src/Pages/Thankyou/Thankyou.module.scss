@@ -1,75 +1,84 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 40px;
+  height: 100vh;
+}
+
 .container {
+  width: v.$web_inner_width;
+  text-align: center;
+}
+
+.icon-check {
+  font-size: 10rem;
+  color: v.$primary_color;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 4.8rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.desc {
+  font-size: 1.6rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0 auto 40px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.info-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: v.$web_inner_width;
-  margin: 20px auto 50px;
+  min-height: 250px;
+}
 
-  .images-container {
-    @include mix.flex_box;
-    gap: 20px;
+.box-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.social-icons {
+  display: flex;
+  gap: 8px;
+}
+.visit-btn {
+  background-color: v.$primary_color;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: opacity 0.2s;
 
-    .img {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 390px;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .desc {
-      font-size: 1.6rem;
-      font-weight: 400;
-      line-height: 26px;
-      color: v.$secondary_color;
-    }
+  &:hover {
+    opacity: 0.9;
   }
 }
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  width: 100%;
-  .slogan {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    line-height: 26px;
-    color: v.$secondary_color;
+
+// Responsive cho mobile
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
   }
   .title {
-    font-size: 2.4rem;
-    line-height: 32px;
-    color: v.$primary_color;
-    margin-bottom: 20px;
-    position: relative;
-    width: 100%;
-    text-transform: capitalize;
-    text-align: center;
-
-    &::before,
-    &::after {
-      content: "";
-      width: 32%;
-      display: block;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 2px;
-      border-top: 1px solid v.$sub_color;
-      border-bottom: 1px solid v.$sub_color;
-    }
-
-    &::before {
-      left: 0;
-    }
-    &::after {
-      right: 0;
-    }
+    font-size: 3.6rem;
   }
 }

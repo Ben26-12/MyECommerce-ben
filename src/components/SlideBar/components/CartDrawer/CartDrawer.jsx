@@ -16,12 +16,6 @@ function CartDrawer() {
   const { setIsOpen, setType, listProductCart, handleGetListProductsCart } =
     useContext(slideBarContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    handleGetListProductsCart(MOCK_USER_ID, "cart");
-    setType("cart");
-  }, []);
-
   const handleNavigate = (path) => {
     setIsOpen(false);
     navigate(path);
@@ -30,6 +24,11 @@ function CartDrawer() {
   const cartSubtotal = useMemo(() => {
     return listProductCart.reduce((acc, currV) => acc + currV.total, 0);
   }, [listProductCart]);
+
+  useEffect(() => {
+    handleGetListProductsCart(MOCK_USER_ID, "cart");
+    setType("cart");
+  }, []);
 
   return (
     <div className={cx("cart")}>

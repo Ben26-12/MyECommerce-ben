@@ -6,6 +6,7 @@ import { publicRoutes } from "@/routes";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SlideBarProvider, ToastProvider } from "@/contexts/";
 import SlideBar from "@/components/SlideBar";
+import { Fragment } from "react";
 
 function App() {
   return (

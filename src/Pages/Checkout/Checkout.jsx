@@ -5,7 +5,7 @@ import CheckoutSummary from "@/Pages/Checkout/CheckoutSummary";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import config from "@/config";
 import { useContext, useMemo } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
@@ -15,14 +15,23 @@ const cx = classNames.bind(styles);
 
 function Checkout() {
   const { listProductCart } = useContext(slideBarContext);
+  const location = useLocation();
+  const displayProducts = useMemo(() => {
+    if (location.state && location.state.length > 0) {
+      return location.state;
+    } else {
+      return listProductCart;
+    }
+  }, [listProductCart, location.state]);
+
   const navigate = useNavigate();
   const total = useMemo(() => {
-    return listProductCart
+    return displayProducts
       .reduce((acc, product) => {
         return acc + Number(product.total) || 0;
       }, 0)
       .toFixed(2);
-  }, [listProductCart]);
+  }, [displayProducts]);
 
   const initialValues = {
     firstName: "",
@@ -62,7 +71,7 @@ function Checkout() {
     onSubmit: (values) => {
       const orderData = {
         ...values,
-        products: listProductCart,
+        products: displayProducts,
         totalAmount: total,
         orderDate: new Date().toISOString(),
       };
@@ -87,7 +96,11 @@ function Checkout() {
             <CheckoutForm formik={formik} />
           </div>
           <div className={cx("right-section")}>
-            <CheckoutSummary total={total} formik={formik} />
+            <CheckoutSummary
+              displayProducts={displayProducts}
+              total={total}
+              formik={formik}
+            />
           </div>
         </div>
       </div>

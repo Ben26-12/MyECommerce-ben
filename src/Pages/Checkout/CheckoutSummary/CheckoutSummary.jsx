@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./CheckoutSummary.module.scss";
 import Button from "@/components/Button";
 import PaymentMethods from "@/components/PaymentMethods";
-import { useContext, useMemo, useState } from "react";
+import { useContext } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { MOCK_USER_ID } from "@/components/ProductCard/constants";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,8 @@ import config from "@/config";
 
 const cx = classNames.bind(styles);
 
-function CheckoutSummary({ formik, total }) {
+function CheckoutSummary({ formik, total, displayProducts }) {
+  const { deleteCartProduct } = useContext(slideBarContext);
   const navigate = useNavigate();
   const handleBackToProduct = (productId) => {
     navigate(config.routes.product + `/${productId}`);
@@ -28,15 +29,13 @@ function CheckoutSummary({ formik, total }) {
     },
   ];
 
-  const { listProductCart, deleteCartProduct } = useContext(slideBarContext);
-
   return (
     <div className={cx("order-summary")}>
       <div className={cx("summary-box")}>
         <h3 className={cx("title")}>YOUR ORDER</h3>
-        {listProductCart.map((productCart) => {
+        {displayProducts.map((productCart, index) => {
           return (
-            <div key={productCart.productId} className={cx("product-item")}>
+            <div key={index} className={cx("product-item")}>
               <div className={cx("product-info")}>
                 <img
                   onClick={() => handleBackToProduct(productCart.productId)}
@@ -68,7 +67,9 @@ function CheckoutSummary({ formik, total }) {
                   </Button>
                 </div>
               </div>
-              <div className={cx("product-total")}>${productCart.total}</div>
+              <div className={cx("product-total")}>
+                ${productCart.total.toFixed(2)}
+              </div>
             </div>
           );
         })}
