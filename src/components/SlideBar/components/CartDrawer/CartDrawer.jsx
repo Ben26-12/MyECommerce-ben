@@ -6,15 +6,12 @@ import ProductItem from "@/components/SlideBar/components/ProductItem";
 import Button from "@/components/Button";
 import { useNavigate } from "react-router-dom";
 import config from "@/config";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
-import { MOCK_USER_ID } from "@/components/ProductCard/constants";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import BlankCart from "@/components/BlankCart";
 const cx = classNames.bind(styles);
 function CartDrawer() {
-  const { setIsOpen, setType, listProductCart, handleGetListProductsCart } =
-    useContext(slideBarContext);
+  const { setIsOpen, listProductCart } = useContext(slideBarContext);
   const navigate = useNavigate();
   const handleNavigate = (path) => {
     setIsOpen(false);
@@ -24,11 +21,6 @@ function CartDrawer() {
   const cartSubtotal = useMemo(() => {
     return listProductCart.reduce((acc, currV) => acc + currV.total, 0);
   }, [listProductCart]);
-
-  useEffect(() => {
-    handleGetListProductsCart(MOCK_USER_ID, "cart");
-    setType("cart");
-  }, []);
 
   return (
     <div className={cx("cart")}>

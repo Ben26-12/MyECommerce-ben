@@ -78,7 +78,7 @@ function Checkout() {
       console.log("Order Data:", orderData);
       toast.success("Order is successfully placed", {
         autoClose: 2000,
-        onClose: () => navigate(config.routes.thankyou),
+        onClose: () => navigate(config.routes.thankyou, { state: orderData }),
       });
     },
   });

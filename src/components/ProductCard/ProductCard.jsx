@@ -12,22 +12,19 @@ import { MOCK_USER_ID } from "@/components/ProductCard/constants";
 import { addProductToCart } from "@/apiServices/cartService";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { toast } from "react-toastify";
+import { SearchContext } from "@/contexts/SearchProvider";
 const cx = classNames.bind(styles);
 
-function ProductCard({ item, showATC, showVariants }) {
+function ProductCard({ item, showATC, showVariants, small }) {
   const { handleGetListProductsCart } = useContext(slideBarContext);
+  const { closeSearch } = useContext(SearchContext);
   const navigate = useNavigate();
-  const defaultSize = () => {
-    if (showVariants) {
-      return "";
-    } else {
-      return item.size[0].name;
-    }
-  };
-  const [sizeChoose, setSizeChoose] = useState(defaultSize);
+
+  const [sizeChoose, setSizeChoose] = useState("");
 
   const handleRedirect = () => {
     navigate(`${config.routes.product}/${item._id}`);
+    closeSearch();
   };
 
   const handleATC = (productId) => {
@@ -58,18 +55,18 @@ function ProductCard({ item, showATC, showVariants }) {
           draggable={false}
           onClick={handleRedirect}
           className={cx("main-img")}
-          src={item.images[0]}
+          src={item?.images?.[0]}
           alt="Product"
         />
         <img
           onClick={handleRedirect}
           className={cx("hover-img")}
-          src={item.images[1]}
+          src={item?.images?.[1]}
           alt="Product"
         />
 
         <div className={cx("actions")}>
-          <Button onClick={(e) => handleATC(item._id)}>
+          <Button onClick={(e) => handleATC(item?._id)}>
             <FontAwesomeIcon icon={faCartShopping} />
           </Button>
           <Button>
@@ -84,7 +81,7 @@ function ProductCard({ item, showATC, showVariants }) {
       <div className={cx("card-information")}>
         {showVariants && (
           <div className={cx("variants")}>
-            {item.size.map((size, index) => {
+            {item?.size?.map((size, index) => {
               return (
                 <Button
                   key={index}
@@ -100,16 +97,16 @@ function ProductCard({ item, showATC, showVariants }) {
           </div>
         )}
         <div className={cx("card-title")} onClick={handleRedirect}>
-          {item.name}
+          {item?.name}
         </div>
         <div className={cx("price")} onClick={handleRedirect}>
-          {typeof item.price == "object"
-            ? `$${item.price.min} - $${item.price.max}`
-            : `$${item.price}`}
+          {typeof item?.price == "object"
+            ? `$${item?.price.min} - $${item?.price.max}`
+            : `$${item?.price}`}
         </div>
         {showATC && (
           <Button
-            onClick={(e) => handleATC(item._id)}
+            onClick={(e) => handleATC(item?._id)}
             className={cx("ATC-btn")}
             primary
           >

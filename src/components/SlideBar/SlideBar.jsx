@@ -1,7 +1,7 @@
 import styles from "./SlideBar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import SlideBarHeader from "@/components/SlideBar/components/SlideBarHeader";
 import CartDrawer from "@/components/SlideBar/components/CartDrawer";
@@ -11,6 +11,17 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 function SlideBar() {
   const { isOpen, setIsOpen, type } = useContext(slideBarContext);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   //dựa vào biến type ở Provider để quyết định render children nào
   const handleRenderChildren = () => {

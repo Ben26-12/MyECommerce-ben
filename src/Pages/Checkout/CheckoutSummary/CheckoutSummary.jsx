@@ -7,6 +7,7 @@ import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { MOCK_USER_ID } from "@/components/ProductCard/constants";
 import { useNavigate } from "react-router-dom";
 import config from "@/config";
+import { payments } from "@/Pages/Checkout/constants";
 
 const cx = classNames.bind(styles);
 
@@ -16,18 +17,6 @@ function CheckoutSummary({ formik, total, displayProducts }) {
   const handleBackToProduct = (productId) => {
     navigate(config.routes.product + `/${productId}`);
   };
-  const payments = [
-    {
-      id: "check",
-      title: "Check payments",
-      desc: "Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.",
-    },
-    {
-      id: "cod",
-      title: "Cash on delivery",
-      desc: "Pay with cash when the order arrives.",
-    },
-  ];
 
   return (
     <div className={cx("order-summary")}>
@@ -108,7 +97,6 @@ function CheckoutSummary({ formik, total, displayProducts }) {
         </div>
 
         <Button
-          type="button"
           onClick={formik.handleSubmit}
           large
           className={cx("place-order-btn")}

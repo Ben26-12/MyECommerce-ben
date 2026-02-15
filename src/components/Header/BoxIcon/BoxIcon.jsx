@@ -9,23 +9,27 @@ import config from "@/config";
 const cx = classNames.bind(styles);
 function BoxIcon({ item }) {
   const { setIsOpen, setType } = useContext(slideBarContext);
+
   const location = useLocation();
 
   const handleCLick = () => {
-    if (
-      location.pathname === config.routes.cart ||
-      location.pathname === config.routes.checkout
-    ) {
-      return;
-    }
-
-    if (item.type) {
-      setType(item.type);
-      setIsOpen(true);
+    switch (item.type) {
+      case "cart":
+        if (
+          //nếu item có type là cart mà không ở checkout hoặc cart thì mới mở
+          location.pathname === config.routes.cart ||
+          location.pathname === config.routes.checkout
+        ) {
+          return;
+        } else {
+          setType(item.type);
+          setIsOpen(true);
+        }
+        break;
     }
   };
   return (
-    <Button className={cx("icon")} onClick={handleCLick} href={item.href}>
+    <Button className={cx("icon")} onClick={handleCLick}>
       <FontAwesomeIcon icon={item.icon} />
       {item.count > 0 && <p className={cx("count")}>{item.count}</p>}
     </Button>

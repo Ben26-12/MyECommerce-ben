@@ -3,9 +3,18 @@ import classNames from "classnames/bind";
 import styles from "./NavMenu.module.scss";
 const cx = classNames.bind(styles);
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext } from "@/contexts/SearchProvider";
 function NavMenu({ item }) {
+  const { openSearch } = useContext(SearchContext);
+
   let Component = "a";
-  const props = {};
+  const handleClick = () => {
+    if (item.type === "search") {
+      openSearch();
+    }
+  };
+  const props = { onClick: handleClick };
   if (item.to) {
     Component = NavLink;
     props.to = item.to;

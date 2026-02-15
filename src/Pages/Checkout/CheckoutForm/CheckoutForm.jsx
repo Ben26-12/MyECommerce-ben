@@ -2,15 +2,9 @@ import classNames from "classnames/bind";
 import styles from "./CheckoutForm.module.scss";
 import Input from "@/components/Input";
 import SelectInput from "@/components/SelectInput";
-import { useNavigate } from "react-router-dom";
+import { COUNTRY_OPTIONS } from "@/Pages/Checkout/constants";
 
 const cx = classNames.bind(styles);
-
-const COUNTRY_OPTIONS = [
-  { value: "UK", label: "United Kingdom (UK)" },
-  { value: "VN", label: "Vietnam (VN)" },
-  { value: "US", label: "United States (US)" },
-];
 
 function CheckoutForm({ formik }) {
   return (

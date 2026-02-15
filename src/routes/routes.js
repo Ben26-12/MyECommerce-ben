@@ -2,7 +2,6 @@ import HeaderOnly from "@/components/Layout/HeaderOnly";
 import Home from "@/Pages/Home";
 import Shop from "@/Pages/Shop";
 import About from "@/Pages/About";
-import Search from "@/Pages/Search";
 import Contact from "@/Pages/Contact";
 import config from "@/config";
 import Cart from "@/Pages/Cart";
@@ -25,11 +24,6 @@ export const publicRoutes = [
   {
     path: config.routes.contact,
     component: Contact,
-  },
-  {
-    path: config.routes.search,
-    component: Search,
-    layout: HeaderOnly,
   },
   {
     path: config.routes.cart,
