@@ -5,7 +5,8 @@
   background-color: #363636;
 }
 .container {
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
   @include mix.flex_box;
   flex-direction: column;
 }
@@ -44,4 +45,14 @@
 .copyrights {
   color: v.$white_color;
   margin: 40px 0;
+  text-align: center;
+}
+
+@media (max-width: 739px) {
+  .container {
+    padding: 20px;
+  }
+  .footer-nav {
+    gap: 15px;
+  }
 }

@@ -11,17 +11,6 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 function SlideBar() {
   const { isOpen, setIsOpen, type } = useContext(slideBarContext);
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen]);
 
   //dựa vào biến type ở Provider để quyết định render children nào
   const handleRenderChildren = () => {

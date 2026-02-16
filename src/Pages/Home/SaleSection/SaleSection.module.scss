@@ -7,6 +7,7 @@
 .box-img-1 {
   @include mix.flex_box;
   flex: 1;
+  width: 100%;
   justify-content: flex-end;
 
   img {
@@ -17,6 +18,7 @@
 .box-img-2 {
   @include mix.flex_box;
   flex: 1;
+  width: 100%;
   justify-content: flex-start;
 
   img {
@@ -61,4 +63,25 @@
   line-height: 26px;
   color: v.$secondary_color;
   margin: 20px 0;
+}
+@media (max-width: 739px) {
+  .sale-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .box-img-1 {
+    display: none;
+  }
+
+  .box-img-2 {
+    padding: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .box-content {
+    width: 100%;
+    padding: 0 20px;
+  }
 }

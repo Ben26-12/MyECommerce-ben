@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   .title {
     font-size: 4.2rem;
@@ -37,5 +38,10 @@
   &:hover {
     background-color: v.$white_color;
     color: v.$black_color;
+  }
+}
+@media (max-width: 739px) {
+  .content {
+    padding: 0 30px;
   }
 }

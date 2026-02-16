@@ -31,3 +31,8 @@
     font-weight: 400;
   }
 }
+@media (max-width: 739px) {
+  .timer-wrapper {
+    flex-direction: column;
+  }
+}

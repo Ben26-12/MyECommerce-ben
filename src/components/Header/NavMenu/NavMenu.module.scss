@@ -42,3 +42,13 @@
     width: 100%;
   }
 }
+@media (max-width: 739px) {
+  .nav-link {
+    &::after {
+      width: 0%;
+    }
+    &.active::after {
+      width: 0%;
+    }
+  }
+}

@@ -14,12 +14,17 @@ import NavMenu from "@components/Header/NavMenu";
 import config from "@/config";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Button from "@/components/Button";
+import MobileMenu from "@/components/Header/MobileMenu";
 
 const cx = classNames.bind(styles);
 
 function Header() {
   const { listProductCart } = useContext(slideBarContext);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpenMenuMobile, setIsOpenMenuMobile] = useState(false);
   const cartCount = useMemo(() => {
     return listProductCart.reduce((acc, product) => {
       return acc + product.quantity;
@@ -44,6 +49,17 @@ function Header() {
   return (
     <header className={wrapperClass}>
       <div className={cx("container")}>
+        {/* menu trên mobile  */}
+        <MobileMenu
+          isOpen={isOpenMenuMobile}
+          onClose={() => setIsOpenMenuMobile(false)}
+        />
+        <Button
+          onClick={() => setIsOpenMenuMobile(true)}
+          className={cx("menu-btn")}
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </Button>
         {/* logo */}
         <div className={cx("logo")}>
           <Link to={config.routes.home}>
@@ -72,7 +88,6 @@ function Header() {
             })}
           </div>
         </div>
-
         {/* right menu  */}
         <div className={cx("right-menu")}>
           <div className={cx("box-icon")}>

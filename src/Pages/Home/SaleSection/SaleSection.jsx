@@ -14,6 +14,10 @@ function SaleSection() {
   const prevPosition = useRef(0);
   useEffect(() => {
     const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        setTranslateXPosition(0);
+        return;
+      }
       const currentPosition = window.scrollY;
       const isScrollingDown = currentPosition > prevPosition.current;
 
@@ -60,7 +64,12 @@ function SaleSection() {
       </div>
       <div className={cx("box-img-2")}>
         <img
-          style={{ transform: `translateX(${translateXPosition}px)` }}
+          style={{
+            transform:
+              window.innerWidth <= 768
+                ? `translateX(0px)` //ở mobile thì lần mount đầu tiên sẽ không 150px transform nữa
+                : `translateX(${translateXPosition}px)`,
+          }}
           src="https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image_2.jpeg"
           alt="image 1"
         />

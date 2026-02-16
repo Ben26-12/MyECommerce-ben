@@ -18,18 +18,31 @@
 }
 @keyframes slideDown {
   from {
-    transform: translateY(-100%);
+    top: -85px;
   }
   to {
-    transform: translateY(0);
+    top: 0;
   }
 }
 .container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
   height: v.$header_height;
+
+  .menu-btn {
+    display: none;
+    font-size: 2.4rem;
+    background-color: transparent;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+  }
 }
 //box icon
 .box-icon {
@@ -57,4 +70,19 @@
 .left-menu {
   display: flex;
   gap: 20px;
+}
+
+//responsive for mobile
+@media (max-width: 739px) {
+  .container {
+    justify-content: center;
+    align-items: baseline;
+    .menu-btn {
+      display: block;
+    }
+  }
+  .left-menu,
+  .right-menu {
+    display: none;
+  }
 }

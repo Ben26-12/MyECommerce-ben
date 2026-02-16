@@ -8,5 +8,8 @@
 
   .home-banner {
     min-height: 750px;
+    @media (max-width: 739px) {
+      min-height: 500px;
+    }
   }
 }

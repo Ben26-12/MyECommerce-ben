@@ -1,6 +1,7 @@
 .wrapper {
   @include mix.flex_box;
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
   padding: 20px 55px 20px 55px;
   background-color: v.$primary_color;
   transform: translateY(-50%);
@@ -34,4 +35,11 @@
   font-size: 1.6rem;
   line-height: 21px;
   color: #ffffffc7;
+}
+//responsive
+@media (max-width: 739px) {
+  .wrapper {
+    flex-direction: column;
+    transform: translateY(0);
+  }
 }
