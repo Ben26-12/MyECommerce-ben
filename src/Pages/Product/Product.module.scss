@@ -1,4 +1,5 @@
 .wrapper {
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
   margin: 0 auto;
 }

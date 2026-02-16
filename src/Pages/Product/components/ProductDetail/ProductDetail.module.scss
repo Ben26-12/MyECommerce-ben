@@ -2,10 +2,6 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 50px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .image-gallery {
@@ -218,5 +214,12 @@
         margin-bottom: 10px;
       }
     }
+  }
+}
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
   }
 }

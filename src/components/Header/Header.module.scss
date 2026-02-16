@@ -77,12 +77,19 @@
   .container {
     justify-content: center;
     align-items: baseline;
+    position: relative;
     .menu-btn {
       display: block;
     }
+    .right-menu {
+      position: absolute;
+      top: 40%;
+      right: 20px;
+      transform: translateY(-50%);
+    }
   }
   .left-menu,
-  .right-menu {
+  .right-menu .box-icon:first-child {
     display: none;
   }
 }

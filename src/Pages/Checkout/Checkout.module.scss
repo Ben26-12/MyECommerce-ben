@@ -5,7 +5,8 @@
   width: 100%;
 }
 .wrapper {
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
   margin: 40px auto;
   padding: 0 20px;
   color: v.$primary_color;
@@ -33,4 +34,12 @@
 
 .right-section {
   flex: 1;
+}
+@media (max-width: 739px) {
+  .container {
+    flex-direction: column;
+  }
+  .left-section {
+    padding: unset;
+  }
 }

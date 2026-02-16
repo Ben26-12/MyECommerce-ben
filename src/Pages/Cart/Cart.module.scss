@@ -14,7 +14,8 @@
   align-items: start;
   gap: 40px;
   margin-top: 30px;
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
 
   .left-content {
     flex: 1 1 60%;
@@ -25,5 +26,30 @@
 
   @media (max-width: 1024px) {
     flex-direction: column; // Trên máy tính bảng/mobile thì xếp chồng lên nhau
+  }
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block; // Phá vỡ cấu trúc table
+
+    thead {
+      display: none; // Ẩn tiêu đề bảng (Product, Price, Quantity...)
+    }
+
+    tbody,
+    tr,
+    td {
+      display: block; // Ép các hàng và ô thành khối dọc
+      width: 100%;
+    }
+
+    tr {
+      position: relative;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+      display: flex; // Dùng flex để sắp xếp lại vị trí ảnh và chữ
+      flex-wrap: wrap;
+    }
   }
 }

@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDetailProduct } from "@/apiServices/productService";
 import config from "@/config";
-import { faToiletPaperAlt } from "@fortawesome/free-solid-svg-icons";
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const navigate = useNavigate();

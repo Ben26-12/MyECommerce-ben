@@ -43,5 +43,10 @@
 @media (max-width: 739px) {
   .content {
     padding: 0 30px;
+
+    .title {
+      font-size: 2.8rem;
+      line-height: 40px;
+    }
   }
 }

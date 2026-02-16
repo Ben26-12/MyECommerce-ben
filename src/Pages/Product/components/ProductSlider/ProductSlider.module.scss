@@ -12,12 +12,18 @@
 }
 .slider-list {
   display: flex;
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
   justify-content: center;
   align-items: flex-start;
   gap: 20px;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+@media (max-width: 739px) {
+  .slider-list {
+    overflow-x: auto;
   }
 }

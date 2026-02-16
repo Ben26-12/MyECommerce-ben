@@ -5,6 +5,10 @@
   padding: 10px 0;
   font-size: 1.4rem;
   justify-content: space-between;
+
+  @media (max-width: 739px) {
+    padding: 10px 20px;
+  }
 }
 .breadcrumb-text {
   @include mix.flex_box;

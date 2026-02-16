@@ -1,5 +1,6 @@
 .container {
-  width: v.$web_inner_width;
+  max-width: v.$web_inner_width;
+  width: 100%;
 }
 .product-list-container {
   .more-btn {
@@ -54,4 +55,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
+}
+@media (max-width: 739px) {
+  .options {
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+    padding: 0 20px;
+  }
+  .products-per-page {
+    margin: unset;
+  }
+  .product-list {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+    width: 100%;
+  }
 }
