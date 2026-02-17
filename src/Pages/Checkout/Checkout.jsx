@@ -7,14 +7,14 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import config from "@/config";
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import Stepper from "@/components/Stepper";
 
 const cx = classNames.bind(styles);
 
 function Checkout() {
-  const { listProductCart } = useContext(slideBarContext);
+  const { listProductCart, isLoading } = useContext(slideBarContext);
   const location = useLocation();
   const displayProducts = useMemo(() => {
     if (location.state && location.state.length > 0) {
@@ -23,6 +23,13 @@ function Checkout() {
       return listProductCart;
     }
   }, [listProductCart, location.state]);
+  //redicrect nếu cart list = 0
+  useEffect(() => {
+    if (!isLoading && displayProducts.length === 0) {
+      toast.warn("Your cart is empty. Redirecting to shop...");
+      navigate(config.routes.shop);
+    }
+  }, [displayProducts.length, isLoading]);
 
   const navigate = useNavigate();
   const total = useMemo(() => {
@@ -82,6 +89,7 @@ function Checkout() {
       });
     },
   });
+
   return (
     <div className={cx("page-wrapper")}>
       <div className={cx("stepper-container")}>

@@ -9,6 +9,21 @@
   transition: 0.4s;
   position: relative;
 
+  .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    .loading {
+      font-size: 2rem;
+      color: v.$white_color;
+    }
+  }
+
   &:hover {
     background-color: v.$sub_color;
   }
@@ -22,12 +37,7 @@
     font-size: 1.2rem;
     cursor: pointer;
     color: v.$secondary_color;
-    visibility: hidden;
     padding: 6px;
-  }
-  &:hover .close-btn {
-    visibility: visible;
-    animation: slideIn linear 0.3s forwards;
   }
 }
 @keyframes slideIn {
@@ -79,4 +89,21 @@
   font-size: 1.4rem;
   color: v.$thr_color;
   margin-left: 6px;
+}
+//phone
+@media (max-width: 739px) {
+  .close-btn {
+    visibility: visible;
+  }
+}
+
+//desktop
+@media (min-width: 1024px) {
+  .close-btn {
+    visibility: hidden;
+  }
+  .product-item:hover .close-btn {
+    visibility: visible;
+    animation: slideIn linear 0.3s forwards;
+  }
 }

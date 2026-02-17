@@ -11,15 +11,83 @@
     font-weight: 500;
     letter-spacing: 1px;
   }
+}
+.coupon-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+  gap: 10px;
 
-  td {
-    padding: 25px 0;
-    border-bottom: 1px solid #eee;
-    font-size: 1.4rem;
-    vertical-align: middle;
+  .coupon-input {
+    display: flex;
+    border: 1px solid #e5e5e5;
+    outline: none;
+    input {
+      border: none;
+      padding: 12px 15px;
+      outline: none;
+      width: 200px;
+    }
+    button {
+      border: none;
+      border-left: 1px solid #e5e5e5;
+      background: #fff;
+      padding: 0 20px;
+      cursor: pointer;
+      font-weight: 600;
+      &:hover {
+        background: #f9f9f9;
+      }
+    }
   }
 }
+.clear-btn {
+  background: #fff;
+  border: 1px solid #222;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 42px;
+  &:hover {
+    background: #222;
+    color: #fff;
+  }
+}
+tr {
+  position: relative;
+
+  .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+
+    .loading {
+      font-size: 2rem;
+      color: v.$white_color;
+    }
+  }
+}
+
+td {
+  padding: 25px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
 .details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   flex: 1;
 }
 .product-info {
@@ -27,7 +95,7 @@
   align-items: start;
   gap: 20px;
   position: relative;
-
+  padding: 10px;
   img {
     width: 80px;
     object-fit: cover;
@@ -80,51 +148,6 @@
   font-weight: 600;
 }
 
-.coupon-section {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  align-items: center;
-  gap: 10px;
-
-  .coupon-input {
-    display: flex;
-    border: 1px solid #e5e5e5;
-    outline: none;
-    input {
-      border: none;
-      padding: 12px 15px;
-      outline: none;
-      width: 200px;
-    }
-    button {
-      border: none;
-      border-left: 1px solid #e5e5e5;
-      background: #fff;
-      padding: 0 20px;
-      cursor: pointer;
-      font-weight: 600;
-      &:hover {
-        background: #f9f9f9;
-      }
-    }
-  }
-}
-.clear-btn {
-  background: #fff;
-  border: 1px solid #222;
-  padding: 12px 25px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  height: 42px;
-  &:hover {
-    background: #222;
-    color: #fff;
-  }
-}
-
 @media (max-width: 739px) {
   .mobile-detail {
     display: flex;
@@ -132,8 +155,12 @@
     flex: 1;
     font-size: 12px;
     color: #999;
+    width: 100%;
   }
   .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     flex: 1;
   }
   .subtotal-price {
@@ -142,16 +169,18 @@
     color: v.$primary_color;
     font-size: 1.4rem;
   }
-  .desktop-detail {
-    display: none;
-  }
+
   .remove-btn {
+    right: 100px;
     padding: 8px;
-    right: 120px;
   }
   .quantity-box {
     gap: 10px;
   }
+  .desktop-detail {
+    display: none;
+  }
+
   .clear-btn {
     padding: 12px 16px;
   }

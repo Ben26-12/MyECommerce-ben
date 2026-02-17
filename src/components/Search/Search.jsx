@@ -141,7 +141,7 @@ function Search() {
         <div className={cx("search-products")}>
           {displayProducts.map((product) => (
             <div key={product._id} className={cx("product-item")}>
-              <ProductCard item={product} small />
+              <ProductCard item={product} />
             </div>
           ))}
 

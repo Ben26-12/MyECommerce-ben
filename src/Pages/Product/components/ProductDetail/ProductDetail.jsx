@@ -10,6 +10,9 @@ import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import { getDetailProduct } from "@/apiServices/productService";
 import config from "@/config";
+import ProductDetailSkeleton from "@/Pages/Product/components/ProductDetail/ProductDetailSkeleton";
+import LoadingIcon from "@/components/LoadingIcon";
+import Button from "@/components/Button";
 const cx = classNames.bind(styles);
 function ProductDetail() {
   const navigate = useNavigate();
@@ -18,14 +21,18 @@ function ProductDetail() {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState();
   const { handleGetListProductsCart } = useContext(slideBarContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const handleBuyNow = (productData) => {
     navigate(config.routes.checkout, { state: [productData] });
   };
   const handleAddtoCart = (data) => {
+    setIsProcessing(true);
     addProductToCart(data)
       .then((res) => {
         toast.success("Add to cart successfully");
         handleGetListProductsCart(MOCK_USER_ID, "cart");
+        setIsProcessing(false);
       })
       .catch((err) => {
         toast.error(
@@ -34,14 +41,16 @@ function ProductDetail() {
       });
   };
   useEffect(() => {
+    setIsLoading(true);
     getDetailProduct(id).then((data) => {
       setProductInfo(data);
       if (data?.size?.length > 0) {
         setSelectedSize(data?.size[0].name);
       }
+      setIsLoading(false);
     });
   }, [id]);
-
+  if (isLoading) return <ProductDetailSkeleton />;
   return (
     <div className={cx("container")}>
       {/* Left: Image Gallery */}
@@ -92,8 +101,10 @@ function ProductDetail() {
             />
             <button onClick={() => setQuantity((q) => q + 1)}>+</button>
           </div>
-          <button
+          <Button
+            disabled={isProcessing}
             className={cx("add-to-cart")}
+            leftIcon={isProcessing && <LoadingIcon />}
             onClick={() => {
               const data = {
                 userId: MOCK_USER_ID,
@@ -106,7 +117,7 @@ function ProductDetail() {
             }}
           >
             ADD TO CART
-          </button>
+          </Button>
         </div>
 
         <div className={cx("or-separator")}>OR</div>

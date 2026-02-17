@@ -2,12 +2,13 @@ import classNames from "classnames/bind";
 import styles from "./CheckoutSummary.module.scss";
 import Button from "@/components/Button";
 import PaymentMethods from "@/components/PaymentMethods";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { MOCK_USER_ID } from "@/components/ProductCard/constants";
 import { useNavigate } from "react-router-dom";
 import config from "@/config";
 import { payments } from "@/Pages/Checkout/constants";
+import LoadingIcon from "@/components/LoadingIcon";
 
 const cx = classNames.bind(styles);
 

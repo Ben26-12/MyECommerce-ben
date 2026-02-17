@@ -91,7 +91,11 @@
   margin-bottom: 15px;
 
   .add-to-cart {
+    display: flex;
     flex: 1;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
     background-color: v.$primary_color;
     color: v.$white_color;
     border: 1px solid v.$primary_color;
@@ -101,6 +105,9 @@
     &:hover {
       background-color: v.$white_color;
       color: v.$primary_color;
+    }
+    .icon {
+      display: flex;
     }
   }
 }

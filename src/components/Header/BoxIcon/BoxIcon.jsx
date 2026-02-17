@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { useLocation } from "react-router-dom";
 import config from "@/config";
+import LoadingIcon from "@/components/LoadingIcon";
 const cx = classNames.bind(styles);
 function BoxIcon({ item }) {
   const { setIsOpen, setType } = useContext(slideBarContext);

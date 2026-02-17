@@ -13,14 +13,15 @@ import { addProductToCart } from "@/apiServices/cartService";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { toast } from "react-toastify";
 import { SearchContext } from "@/contexts/SearchProvider";
+import LoadingIcon from "@/components/LoadingIcon";
 const cx = classNames.bind(styles);
 
-function ProductCard({ item, showATC, showVariants, small }) {
+function ProductCard({ item, showATC, showVariants }) {
   const { handleGetListProductsCart } = useContext(slideBarContext);
   const { closeSearch } = useContext(SearchContext);
   const navigate = useNavigate();
-
   const [sizeChoose, setSizeChoose] = useState("");
+  const [isAdding, setIsAdding] = useState(false);
 
   const handleRedirect = () => {
     navigate(`${config.routes.product}/${item._id}`);
@@ -28,24 +29,30 @@ function ProductCard({ item, showATC, showVariants, small }) {
   };
 
   const handleATC = (productId) => {
+    // 1. Xác định size sẽ dùng: Nếu có showVariants thì lấy size đã chọn, nếu không thì lấy size đầu tiên
+    const finalSize = showVariants ? sizeChoose : item.size[0]?.name;
+
+    // 2. Kiểm tra nếu bắt buộc chọn size mà chưa chọn
+    if (showVariants && !finalSize) {
+      return toast.error("Please choose your variants to add to cart");
+    }
+
+    // 3. Gọi API với dữ liệu đã chuẩn bị
     const data = {
       userId: MOCK_USER_ID,
       productId,
       quantity: 1,
-      size: sizeChoose,
+      size: finalSize,
       isMultiple: false,
     };
-
-    if (!sizeChoose) {
-      toast.error("Please choose your variants to add to cart");
-    } else {
-      addProductToCart(data)
-        .then((res) => {
-          handleGetListProductsCart(MOCK_USER_ID, "cart");
-          toast.success("Added to cart!");
-        })
-        .catch((err) => toast.error("Failed to add!"));
-    }
+    setIsAdding(true);
+    addProductToCart(data)
+      .then((res) => {
+        handleGetListProductsCart(MOCK_USER_ID, "cart");
+        toast.success("Added to cart!");
+        setIsAdding(false);
+      })
+      .catch((err) => toast.error("Failed to add!"));
   };
   return (
     <div className={cx("product-card")}>
@@ -109,6 +116,8 @@ function ProductCard({ item, showATC, showVariants, small }) {
             onClick={(e) => handleATC(item?._id)}
             className={cx("ATC-btn")}
             primary
+            disabled={isAdding}
+            leftIcon={isAdding && <LoadingIcon />}
           >
             Add to cart
           </Button>

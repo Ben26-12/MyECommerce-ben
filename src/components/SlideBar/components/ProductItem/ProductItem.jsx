@@ -6,16 +6,25 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import styles from "./ProductItem.module.scss";
 import config from "@/config";
 import Button from "@/components/Button";
-import { deleteItem } from "@/apiServices/cartService";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import { MOCK_USER_ID } from "@/components/ProductCard/constants";
-import { toast } from "react-toastify";
+import LoadingIcon from "@/components/LoadingIcon";
 
 const cx = classNames.bind(styles);
 function ProductItem({ product }) {
+  const [isDeleting, setIsDeleting] = useState(false);
   const { deleteCartProduct, setIsOpen } = useContext(slideBarContext);
-
+  const handleDeleteProductInCart = (productId) => {
+    setIsDeleting(true);
+    try {
+      deleteCartProduct(productId, MOCK_USER_ID);
+      //không cần setIsDeleting = false ở đây cũng được vì item bị remove rồi
+    } catch (err) {
+      //deleteCartProduct có thow lỗi ra, catch tiếp ở đây
+      setIsDeleting(false);
+    }
+  };
   //handle direct sang product page
   const navigate = useNavigate();
   const handleNavigatetoProduct = () => {
@@ -25,11 +34,16 @@ function ProductItem({ product }) {
   //return
   return (
     <div className={cx("product-item")}>
+      {isDeleting && (
+        <div className={cx("overlay")}>
+          <LoadingIcon className={cx("loading")} />
+        </div>
+      )}
       <Button
-        onClick={() => deleteCartProduct(product.productId, MOCK_USER_ID)}
+        onClick={() => handleDeleteProductInCart(product.productId)}
         className={cx("close-btn")}
       >
-        <FontAwesomeIcon icon={faX} />
+        {isDeleting ? <LoadingIcon /> : <FontAwesomeIcon icon={faX} />}
       </Button>
       <img
         className={cx("product-img")}

@@ -3,7 +3,7 @@
   border: none;
   transition: 0.3s;
   cursor: pointer;
-
+  gap: 6px;
   &.primary {
     @include mix.btn(200px, 40px, 4px); //nút đen chữ trắng
     color: v.$white_color;
@@ -23,12 +23,17 @@
   }
 
   &.disabled {
-    opacity: 0.5;
+    opacity: 0.9;
     pointer-events: none;
     user-select: none;
   }
 
   @media (max-width: 739px) {
     padding: 20px;
+  }
+
+  span.icon {
+    display: flex;
+    align-items: center;
   }
 }

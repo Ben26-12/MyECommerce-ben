@@ -4,6 +4,7 @@ import { getProduct } from "@/apiServices/productService";
 export const OurShopContext = createContext();
 
 function OurShopProvider({ children }) {
+  const [isLoading, setIsLoading] = useState(false);
   const sortOptions = [
     { label: "Default sorting", value: "0" },
     { label: "Sort by latest", value: "3" },
@@ -14,7 +15,7 @@ function OurShopProvider({ children }) {
   const showOptions = [
     { label: "8", value: "8" },
     { label: "12", value: "12" },
-    { label: "All", value: "" },
+    { label: "23", value: "23" },
   ];
   const [sortValue, setSortValue] = useState("0");
   const [perPageValue, setPerPageValue] = useState("8");
@@ -22,6 +23,7 @@ function OurShopProvider({ children }) {
 
   useEffect(() => {
     let isUnmounted = false;
+    setIsLoading(true);
 
     getProduct({
       sortType: sortValue,
@@ -30,11 +32,14 @@ function OurShopProvider({ children }) {
     }).then((res) => {
       if (!isUnmounted) {
         setProducts(res.data.contents ?? res);
+        setIsLoading(false);
       }
     });
     return () => (isUnmounted = true);
   }, [sortValue, perPageValue]);
   const value = {
+    isLoading,
+    setIsLoading,
     sortOptions,
     showOptions,
     sortValue,

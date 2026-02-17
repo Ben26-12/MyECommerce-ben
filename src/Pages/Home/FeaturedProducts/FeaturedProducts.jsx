@@ -8,16 +8,20 @@ import CountDownBanner from "@/Pages/Home/CountDownBanner";
 const cx = classNames.bind(styles);
 import { getProduct } from "@/apiServices/productService";
 import { useEffect, useState } from "react";
+import ProductCardSkeleton from "@/components/ProductCard/ProductCardSkeleton/ProductCardSkeleton";
 
 function FeatureProducts() {
+  const [isLoading, setIsLoading] = useState(true);
   const [listProducts, setListProducts] = useState([]);
   useEffect(() => {
+    setIsLoading(true);
     getProduct({
       sortType: 1,
       page: 1,
       limit: 14,
     }).then((res) => {
       setListProducts(res.data.contents ?? res);
+      setIsLoading(false);
     });
   }, []);
   return (
@@ -26,20 +30,42 @@ function FeatureProducts() {
       {/* Khối list product 1 */}
       <div className={cx("product-list")}>
         <CountDownBanner />
-        <div className={cx("section-grid-2")}>
-          {listProducts.slice(0, 2).map((item) => {
-            return <ProductCard key={item._id} item={item} />;
-          })}
-        </div>
+        {isLoading ? (
+          <div className={cx("section-grid-2")}>
+            {Array(2)
+              .fill(0)
+              .map((_, index) => {
+                return <ProductCardSkeleton key={index} />;
+              })}
+          </div>
+        ) : (
+          <div className={cx("section-grid-2")}>
+            {listProducts.slice(0, 2).map((item) => {
+              return <ProductCard key={item._id} item={item} />;
+            })}
+          </div>
+        )}
       </div>
       {/* Khối list product 2 */}
-      <div className={cx("product-list")}>
-        <div className={cx("section-grid-4")}>
-          {listProducts.slice(2).map((item) => {
-            return <ProductCard key={item._id} item={item} />;
-          })}
+      {isLoading ? (
+        <div className={cx("product-list")}>
+          <div className={cx("section-grid-4")}>
+            {Array(12)
+              .fill(0)
+              .map((_, index) => {
+                return <ProductCardSkeleton key={index} />;
+              })}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className={cx("product-list")}>
+          <div className={cx("section-grid-4")}>
+            {listProducts.slice(2).map((item) => {
+              return <ProductCard key={item._id} item={item} />;
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

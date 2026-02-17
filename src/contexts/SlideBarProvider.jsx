@@ -8,11 +8,14 @@ function SlideBarProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState("cart");
   const [listProductCart, setListProductCart] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const handleGetListProductsCart = (userId, type) => {
     if (userId && type === "cart") {
+      setIsLoading(true);
       getCart(userId)
         .then((res) => {
           setListProductCart(res.data.data);
+          setIsLoading(false);
         })
         .catch((err) => {
           setListProductCart([]);
@@ -31,22 +34,21 @@ function SlideBarProvider({ children }) {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
+
   useEffect(() => {
     handleGetListProductsCart(MOCK_USER_ID, "cart");
   }, []);
-  const deleteCartProduct = (productId, userId) => {
-    if (type === "cart") {
-      deleteItem({
-        productId,
-        userId,
-      })
-        .then((res) => {
-          handleGetListProductsCart(userId, "cart");
-          toast.info("Delete item successfully");
-        })
-        .catch((err) => {
-          toast.error("Something went wrong, can not delete item");
-        });
+
+  const deleteCartProduct = async (productId, userId) => {
+    if (type !== "cart") return;
+    try {
+      const res = await deleteItem({ productId, userId });
+      await handleGetListProductsCart(userId, "cart");
+      toast.info("Delete item successfully");
+      return res;
+    } catch (err) {
+      toast.error("Something went wrong, can not delete item");
+      throw err; //throw ra ngoài để catch tiếp ở bên ngoài
     }
   };
 
@@ -71,6 +73,8 @@ function SlideBarProvider({ children }) {
     handleGetListProductsCart,
     deleteCartProduct,
     handleDeleteCart,
+    isLoading,
+    setIsLoading,
   };
   return (
     <slideBarContext.Provider value={value}>

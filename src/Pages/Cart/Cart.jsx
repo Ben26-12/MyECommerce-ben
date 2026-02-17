@@ -2,15 +2,14 @@ import classNames from "classnames/bind";
 import styles from "./Cart.module.scss";
 import CartTable from "@/Pages/Cart/components/CartTable";
 import CartSummary from "@/Pages/Cart/components/CartSummary";
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { slideBarContext } from "@/contexts/SlideBarProvider";
 import BlankCart from "@/components/BlankCart";
 import Stepper from "@/components/Stepper";
 
 const cx = classNames.bind(styles);
 function Cart() {
-  const { listProductCart, handleGetListProductsCart, setIsOpen } =
-    useContext(slideBarContext);
+  const { listProductCart } = useContext(slideBarContext);
 
   const subtotal = useMemo(() => {
     return (listProductCart || []).reduce(
