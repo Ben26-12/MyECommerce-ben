@@ -1,6 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import "@styles/main.scss";
-
+import { Suspense } from "react";
 import MainLayout from "@components/Layout/MainLayout";
 import { publicRoutes } from "@/routes";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
@@ -14,7 +14,7 @@ function App() {
     <SearchProvider>
       <ToastProvider>
         <SlideBarProvider>
-          <Router basename="/myEcom-ben">
+          <Router>
             <Search />
             <SlideBar />
             <Routes>
@@ -32,7 +32,9 @@ function App() {
                     path={route.path}
                     element={
                       <Layout>
-                        <Page />
+                        <Suspense>
+                          <Page />
+                        </Suspense>
                       </Layout>
                     }
                   />

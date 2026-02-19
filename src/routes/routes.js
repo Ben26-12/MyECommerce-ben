@@ -1,13 +1,14 @@
-import HeaderOnly from "@/components/Layout/HeaderOnly";
-import Home from "@/Pages/Home";
-import Shop from "@/Pages/Shop";
-import About from "@/Pages/About";
-import Contact from "@/Pages/Contact";
+import { lazy } from "react";
+const Home = lazy(() => import("@/Pages/Home"));
+const Shop = lazy(() => import("@/Pages/Shop"));
+const About = lazy(() => import("@/Pages/About"));
+const Contact = lazy(() => import("@/Pages/Contact"));
+const Cart = lazy(() => import("@/Pages/Cart"));
+const Checkout = lazy(() => import("@/Pages/Checkout"));
+const Product = lazy(() => import("@/Pages/Product"));
+const ThankYou = lazy(() => import("@/Pages/Thankyou"));
+
 import config from "@/config";
-import Cart from "@/Pages/Cart";
-import Checkout from "@/Pages/Checkout";
-import Product from "@/Pages/Product";
-import ThankYou from "@/Pages/Thankyou";
 export const publicRoutes = [
   {
     path: config.routes.home,
